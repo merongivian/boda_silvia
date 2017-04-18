@@ -1,15 +1,11 @@
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-
 development:
-  <<: *default
+  adapter: postgresql
   database: hitched_development
+  pool: 5
+  timeout: 5000
 
 test:
-  <<: *default
+  adapter: postgresql
   database: hitched_test
+  pool: 5
+  timeout: 5000
