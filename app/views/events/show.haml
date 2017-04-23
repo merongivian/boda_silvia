@@ -3,13 +3,13 @@
 .box.box--mint
   .row
     .column.small-12#banner
-      %h2 Nuestra Boda!
+      %h2#main-banner Nuestra Boda!
       %h1
         = @event.partner_one
         %span.font--pacifico &
         = @event.partner_two
 .row
-  .column.small-12
+  .column.small-12.obscure-banner
     %h5 El gran dia
     %h3= @event.date
 
@@ -39,7 +39,7 @@
   %br
 
   #rsvp.row{ng: { controller: "RsvpController" }}
-    .column.small-12
+    .column.small-12.obscure-banner
       %h5 Confirma tu Asistencia
       = simple_form_for rsvp_event_groups_path(@event) do |f|
         %h3 Ingresa tu nombre
@@ -89,7 +89,7 @@
 %br
 
 .row
-  .column.small-12.medium-8.medium-offset-2
+  .column.small-12.medium-8.medium-offset-2.obscure-banner
     %h5 Fotos
 
 - if @event.show_photos?(params)

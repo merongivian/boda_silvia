@@ -10,6 +10,14 @@
 
 @import "layout/core";
 
+#main-banner {
+  font-weight: 700;
+}
+
+.obscure-banner h5, h3, label {
+  color: #7B7B7B;
+}
+
 .box--mint {
   background: $mint;
 
