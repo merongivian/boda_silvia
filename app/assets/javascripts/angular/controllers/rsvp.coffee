@@ -31,10 +31,10 @@ app.controller "RsvpController", ["$scope", "Restangular", ($scope, Restangular)
   #   $scope.group = group
 
   $scope.rsvpStatus = (guest) ->
-    return "Gracias por tu confirmacion, te esperamos !! :)" if guest.rsvp
+    return "Gracias por tu confirmación, te esperamos !! :)" if guest.rsvp
     return "Ingresa tu nombre" if guest.is_guest
-    return "Anteriormente, nos confirmaste que no podias asistir." if guest.rsvp == false
-    return "Todavia no has respondido a la invitacion"
+    return "Anteriormente, nos confirmaste que no podías asistir." if guest.rsvp == false
+    return "Todavía no has respondido a la invitación"
 
   $scope.rsvpButtonText = (guest) ->
     return "Añadirme como invitado" if guest.is_guest
