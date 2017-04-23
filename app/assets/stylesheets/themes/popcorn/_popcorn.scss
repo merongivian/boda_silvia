@@ -14,9 +14,13 @@
   background: $mint;
 
   h1 {
-    text-shadow: 3px 3px 0 $salmon;
-    font-size: 150px;
+    text-shadow: 3px 3px 0 $mint;
+    font-size: 110px;
   }
+}
+
+#banner h1 {
+  margin-top: -29px;
 }
 
 .cb-checkbox.checked .cb-inner {

@@ -2,15 +2,16 @@
 
 .box.box--mint
   .row
-    .column.small-12
+    .column.small-12#banner
+      %h2 Nuestra Boda!
       %h1
         = @event.partner_one
         %span.font--pacifico &
         = @event.partner_two
 .row
   .column.small-12
-    %h5 Get married on
-    %h3= @event.formatted_time
+    %h5 El gran dia
+    %h3= @event.date
 
 #location.inverted.paralax{ :style => "background-image: url('#{@primary_venue_photo}');" }
   .row
@@ -19,38 +20,38 @@
       %br
       %br
 
-      %h2= "at the beautiful #{@event.venue_name}"
-      %h4= "in #{@event.venue_address_city}"
+      %h2= "en la #{@event.venue_name}"
+      %h4= "de la ciudad de #{@event.venue_address_city}"
 
       %br
       %br
       %br
 
       - if @event.show_rsvp?
-        = link_to raw("<span class='icon icon-pencil'></span> RSVP now"), "#rsvp", class: "button large js-scroll-to"
+        = link_to raw("<span class='icon icon-pencil'></span> Confirmar asistencia"), "#rsvp", class: "button large js-scroll-to"
 
 - if @event.show_rsvp?
   %br
 
   #rsvp.row{ng: { controller: "RsvpController" }}
     .column.small-12
-      %h5 RSVP
+      %h5 Confirma tu Asistencia
       = simple_form_for rsvp_event_groups_path(@event) do |f|
-        %h3 Step one - enter your name
+        %h3 Ingresa tu nombre
         .row
           .column.small-12.column.medium-6.medium-offset-3
-            = f.input :guest, collection: @groups, as: :select, placeholder: "Select your name(s)"
+            = f.input :invitado, collection: @groups, as: :select, placeholder: "Select your name(s)"
         %br
 
       .row
         .column.small-12.medium-6{ "ng-repeat" => "guest in group" }
           .card
             %h3 {{ guestName(guest) }}
-            %input{type: "text", placeholder: "enter guest name", ng: { show: "guest.is_guest", model: "newGuest.name" }}
+            %input{type: "text", placeholder: "ingresa tu nombre", ng: { show: "guest.is_guest", model: "newGuest.name" }}
             %p {{ rsvpStatus(guest) }}
-            %span.button{ng: { show: "guest.rsvp == null && !guest.is_guest", click: "setRsvp(guest, false)"}} Sorry I can not attend
+            %span.button{ng: { show: "guest.rsvp == null && !guest.is_guest", click: "setRsvp(guest, false)"}} Lo siento, no puedo asistir
             %span.button{ng: { hide: "guest.is_guest || guest.rsvp", click: "setRsvp(guest, true)"}} {{ rsvpButtonText(guest) }}
-            %span.button{ng: { show: "guest.rsvp", click: "setRsvp(guest, false)"}} Sorry I can no longer make it
+            %span.button{ng: { show: "guest.rsvp", click: "setRsvp(guest, false)"}} Lo siento, ya no puedo asistir
             %span.button{ng: { show: "guest.is_guest", disabled: "newGuest.name == ''", click: "defineGuest(guest)"}} {{ rsvpButtonText(guest) }}
 
             .reset{ng: {show: "guest.rsvp && guest.invited_to_ceremony"}}
@@ -74,7 +75,7 @@
         %h3= @event.venue_name
         = raw(@event.venue_body.from_markdown_to_html)
         %br
-        %h4 Directions
+        %h4 Direcciones
         = raw(@event.venue_directions.from_markdown_to_html)
         %br
         .map--overlay{onclick: "style.pointerEvents='none'"}
@@ -200,7 +201,7 @@
 
 .row
   .column.small-12.medium-8.medium-offset-2
-    %h5 Photos
+    %h5 Fotos
 
 - if @event.show_photos?(params)
   = render partial: "photos/form"
@@ -210,7 +211,7 @@
 - else
   .row
     .column.small-12
-      %p We invite you back to this website after the wedding to view and upload photos
+      %p Te invitamos a que regreses a esta seccion el dia de la boda para que puedas subir y ver fotos
 
 %br
 

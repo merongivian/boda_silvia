@@ -31,16 +31,16 @@ app.controller "RsvpController", ["$scope", "Restangular", ($scope, Restangular)
   #   $scope.group = group
 
   $scope.rsvpStatus = (guest) ->
-    return "Thank you for your RSVP, we look forward to seeing you :)" if guest.rsvp
-    return "Feel free to add a guest to your RSVP by adding their name above." if guest.is_guest
-    return "You have RSVP that you can not attend." if guest.rsvp == false
-    return "You have not yet RSVP'd."
+    return "Gracias por tu confirmacion, te esperamos !! :)" if guest.rsvp
+    return "Ingresa tu nombre" if guest.is_guest
+    return "Anteriormente, nos confirmaste que no podias asistir." if guest.rsvp == false
+    return "Todavia no has respondido a la invitacion"
 
   $scope.rsvpButtonText = (guest) ->
-    return "Add guest" if guest.is_guest
-    return "Yes I can attend"
+    return "Añadirme como invitado" if guest.is_guest
+    return "Si puedo asistir"
 
   $scope.guestName = (guest) ->
-    return "Guest" if guest.is_guest
+    return "Invitado" if guest.is_guest
     return guest.name
 ]

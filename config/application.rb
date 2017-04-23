@@ -22,5 +22,9 @@ module Hitched
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.exceptions_app = self.routes
+
+    I18n.enforce_available_locales = false
+    I18n.config.available_locales = :es
+    config.i18n.default_locale = :en
   end
 end
